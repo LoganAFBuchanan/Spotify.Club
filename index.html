@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Spotify Club</title>
+	<link rel="stylesheet" href="styles.css" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<div class="main-grid">
+		<header >
+			<h1>Jolly Friendsmas!</h1>
+			<p>A collection of albums curated for the people I love!</p>
+		</header>
+		<div class="grid-container">
+			<div id="album01" class="album-grid">
+				<img class="background" src="images/albums/album1.png">
+				<img class="foreground" src="http://placehold.it/250x250/">
+				<div class="details hide">
+
+				</div>
+			</div>
+			<div id="album01" class="album-grid">
+				<img class="background" src="images/albums/album2.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+				<div class="details hide">
+					
+				</div>
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album3.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album4.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album5.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album6.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album7.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album8.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album9.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album10.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album11.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album12.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+			<div class="album-grid">
+				<img class="background" src="images/albums/album13.jpg">
+				<img class="foreground" src="http://placehold.it/250x250/">
+			</div>
+
+		</div>
+		<footer>
+
+		</footer>
+	</div>
+	<div id="pop-over" style="bottom:-800px;" class="hide">
+		
+		<div class="album-art">
+			<img src="http://placehold.it/500x500">
+		</div>
+		
+		<div class="album-details">
+			<h2>[Album Title]</h2>
+			<h3>[Artist Name]</h3>
+			<p><em>[Album Quote]</em></p>
+			<ol class="track-list">
+				<li>[Track Name]</li>
+				<li>[Track Name]</li>
+				<li>[Track Name]</li>
+				<li>[Track Name]</li>
+			</ol>
+		</div>
+
+		<div class="album-desc">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis fringilla libero. Integer eget tristique nibh, non accumsan tellus. Fusce sit amet maximus orci. Donec mattis tempor leo ac mattis. Curabitur non lectus vel sapien venenatis auctor. In hac habitasse platea dictumst. Cras placerat, mi a pretium fringilla, lorem dolor placerat metus, sit amet accumsan dolor erat eu velit. Aliquam malesuada velit in eros fringilla, sit amet semper massa bibendum. Quisque finibus nisi est, et condimentum turpis vulputate vel.</p>
+		</div>
+
+
+		<div id="close">
+			<i class="material-icons">&#xE5CD;</i>
+		</div>
+
+	</div>
+</body>
+
+<script>
+
+	var popover = document.getElementById('pop-over');
+	var albumCollection = document.getElementsByClassName('album-grid'); //HTMLCollection
+	var closeButton = document.getElementById('close');	
+
+	var albumArray = [].slice.call(albumCollection); //Changing Collection to Array for use in forEach
+
+
+	//Setting listeners for all the albums on the site
+	albumArray.forEach(function(element) {
+
+    	element.addEventListener('click', function () {
+
+		if (popover.classList.contains('hide')) {
+			showPopover();
+
+		} else if(popover.classList.contains('show')) {
+			hidePopover();
+
+		}
+	});
+	});
+
+	closeButton.addEventListener('click', function () {
+		if(popover.classList.contains('show')) {
+			hidePopover();
+		}
+	});
+
+	window.addEventListener("resize", maintainHidden);
+
+	function maintainHidden(){
+		if (popover.classList.contains('hide')) {
+			popover.style.bottom = -popover.clientHeight - 5 + "px";
+			popover.style.transition = "none";
+		}
+	}
+
+	function showPopover(){
+		popover.classList.remove('hide');
+		popover.classList.add('show');
+		popover.style.bottom = 0;
+		popover.style.transition = "all .6s ease-in-out"
+	}
+
+	function hidePopover(){
+		popover.classList.remove('show');
+		popover.classList.add('hide');
+
+		popover.style.bottom = -popover.clientHeight - 5 + "px";
+		popover.style.transition = "all .6s ease-in-out";
+		
+	}
+
+	
+
+</script>
+</html>
