@@ -27,13 +27,22 @@ p{
 	font-size:1.2em;
 }
 
+a{
+	color:inherit;
+	text-decoration: underline;
+}
+
+a:hover{
+	opacity:0.6;
+}
+
 .main-grid{
 	display:grid;
 	grid-template-areas:". header  ."
 	". albums  ."
 	". footer  .";
 	grid-template-columns:1fr 60% 1fr;
-	grid-template-rows: auto auto 200px;
+	grid-template-rows: auto auto auto;
 
 }
 
@@ -77,6 +86,13 @@ header{
 
 footer{
 	grid-area: footer;
+}
+
+footer h2{
+	font-family: 'Abel', sans-serif;
+	text-align:center;
+	margin:2em;
+	font-size:1em;
 }
 
 
@@ -210,11 +226,13 @@ POP OVER STYLES START
 	.album-desc{
 		padding:1em;
 		padding-top:0;
+		max-height:200px;
 		
 	}
 
 	.album-desc p{
 		font-size:1em;
+
 	}
 
 	#close{
@@ -245,6 +263,7 @@ POP OVER STYLES START
 
 	.album-desc{
 		padding:1em;
+		max-height:200px;
 	}
 }
 
