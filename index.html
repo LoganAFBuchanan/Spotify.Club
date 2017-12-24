@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-  	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Spotify Club</title>
 	<link rel="stylesheet" href="styles.css" type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,15 +17,74 @@
 			<div id="album01" class="album-grid">
 				<img class="background" src="images/albums/album1.png">
 				<img class="foreground" src="http://placehold.it/250x250/">
-				<div class="details hide">
+				<div class="details hidden">
+					<div class="album-art">
+						<img src="images/albums/album1.png">
+					</div>
 
+					<div class="album-details">
+						<h2>How To Leave Town</h2>
+						<h3>Car Seat Headrest</h3>
+						<p><em>"All my fantasies are faking orgasms, they're only in it for the money I made up for them"</em></p>
+						<ol class="track-list">
+							<li>The Ending of Dramamine</li>
+							<li class="highlight">Beast Monster Thing (Love Isn't Love Enough)</li>
+							<li class="highlight">Kimochi Warui (When? When? When? When? When? When? When?)</li>
+							<li>I-94 W (832 mi)</li>
+							<li>You're In Love With Me </li>
+							<li class="highlight">America (Never Been)</li>
+							<li>I Want You To Know That I'm Awake/I Hope That You're Asleep</li>
+							<li>is this dust really from the Titanic?</li>
+							<li class="highlight">Hey, Space Cadet (Beast Monster Thing In Space)</li>
+						</ol>
+					</div>
+
+					<div class="album-desc">
+						<p>Description of Car Seat Headrest</p>
+					</div>
+
+					<div id="close" onclick="hidePopover()">
+						<i class="material-icons">&#xE5CD;</i>
+					</div>
 				</div>
 			</div>
 			<div id="album01" class="album-grid">
 				<img class="background" src="images/albums/album2.jpg">
 				<img class="foreground" src="http://placehold.it/250x250/">
-				<div class="details hide">
-					
+				<div class="details hidden">
+					<div class="album-art">
+						<img src="images/albums/album2.jpg">
+					</div>
+
+					<div class="album-details">
+						<h2>Relax</h2>
+						<h3>Das Racist</h3>
+						<p><em>"MICHAEL JACKSON, A MILLION DOLLARS, YA FEEL ME? HOLLA"</em></p>
+						<ol class="track-list">
+							<li>Relax</li>
+							<li class="highlight">Michael Jackson</li>
+							<li class="highlight">Brand New Dance</li>
+							<li>Middle of the Cake</li>
+							<li>Girl</li>
+							<li class="highlight">Shut Up, Man</li>
+							<li class="highlight">Happy Rappy</li>
+							<li>Booty in the Air</li>
+							<li>Power</li>
+							<li>Punjabi Song</li>
+							<li>Selena</li>
+							<li class="highlight">Rainbow in the Dark</li>
+							<li>The Trick</li>
+							<li>Celebration</li>
+						</ol>
+					</div>
+
+					<div class="album-desc">
+						<p>Description of Das Racist</p>
+					</div>
+
+					<div id="close" onclick="hidePopover()">
+						<i class="material-icons">&#xE5CD;</i>
+					</div>
 				</div>
 			</div>
 			<div class="album-grid">
@@ -59,6 +118,7 @@
 			<div class="album-grid">
 				<img class="background" src="images/albums/album10.jpg">
 				<img class="foreground" src="http://placehold.it/250x250/">
+
 			</div>
 			<div class="album-grid">
 				<img class="background" src="images/albums/album11.jpg">
@@ -101,7 +161,7 @@
 		</div>
 
 
-		<div id="close">
+		<div class="close" onclick="hidePopover()">
 			<i class="material-icons">&#xE5CD;</i>
 		</div>
 
@@ -112,30 +172,35 @@
 
 	var popover = document.getElementById('pop-over');
 	var albumCollection = document.getElementsByClassName('album-grid'); //HTMLCollection
-	var closeButton = document.getElementById('close');	
+	var closeButton = document.getElementsByClassName('close');	
 
 	var albumArray = [].slice.call(albumCollection); //Changing Collection to Array for use in forEach
-
+	var closeArray = [].slice.call(closeButton);
 
 	//Setting listeners for all the albums on the site
 	albumArray.forEach(function(element) {
 
-    	element.addEventListener('click', function () {
+		element.addEventListener('click', function () {
 
-		if (popover.classList.contains('hide')) {
-			showPopover();
+			var albumContent = element.getElementsByClassName('details');
+			popover.innerHTML = albumContent[0].innerHTML;
 
-		} else if(popover.classList.contains('show')) {
-			hidePopover();
+			if (popover.classList.contains('hide')) {
+				showPopover();
 
-		}
+			} else if(popover.classList.contains('show')) {
+				
+
+			}
+		});
 	});
-	});
 
-	closeButton.addEventListener('click', function () {
-		if(popover.classList.contains('show')) {
-			hidePopover();
-		}
+	closeArray.forEach(function(element) {
+		element.addEventListener('click', function () {
+			if(popover.classList.contains('show')) {
+				hidePopover();
+			}
+		});
 	});
 
 	window.addEventListener("resize", maintainHidden);
@@ -160,7 +225,7 @@
 
 		popover.style.bottom = -popover.clientHeight - 5 + "px";
 		popover.style.transition = "all .6s ease-in-out";
-		
+
 	}
 
 	

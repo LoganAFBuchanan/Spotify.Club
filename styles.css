@@ -129,15 +129,15 @@ POP OVER STYLES START
 	overflow-y:scroll;
 }
 
-.album-desc::-webkit-scrollbar{
-    width: 1em;
+.album-desc::-webkit-scrollbar, .track-list::-webkit-scrollbar{
+    width: 0.5em;
 }
  
-.album-desc::-webkit-scrollbar-track {
+.album-desc::-webkit-scrollbar-track, .track-list::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
  
-.album-desc::-webkit-scrollbar-thumb {
+.album-desc::-webkit-scrollbar-thumb, .track-list::-webkit-scrollbar-thumb {
   background-color: #575e58;
   outline: 1px solid slategrey;
 }
@@ -163,6 +163,19 @@ POP OVER STYLES START
 	transition:all .6s;
 }
 
+.track-list{
+	max-height:150px;
+	overflow-y:scroll;
+}
+
+.highlight{
+	color:#babe42;
+}
+
+.hidden{
+	display:none;
+}
+
 .show{
 	
 }
@@ -185,8 +198,18 @@ POP OVER STYLES START
 		display:none;
 	}
 
+	.album-details{
+		padding-bottom:0;
+	}
+
 	.album-desc{
 		padding:1em;
+		padding-top:0;
+		
+	}
+
+	.album-desc p{
+		font-size:1em;
 	}
 
 	#close{
@@ -253,5 +276,9 @@ POP OVER STYLES START
 	grid-template-columns:1fr 800px 1fr;
 
 
-}
+	}
+
+	.track-list{
+		max-height:200px;
+	}
 }
