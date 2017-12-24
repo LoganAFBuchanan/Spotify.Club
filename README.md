@@ -1,2 +1,2 @@
 # Spotify.Club
-A colletions of curated albums for the people I love.
+A collection of curated albums for the people I love.
