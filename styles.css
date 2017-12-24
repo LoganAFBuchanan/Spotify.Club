@@ -36,7 +36,7 @@ a:hover{
 	opacity:0.6;
 }
 
-.main-grid{
+#main-grid{
 	display:grid;
 	grid-template-areas:". header  ."
 	". albums  ."
@@ -269,7 +269,7 @@ POP OVER STYLES START
 
 
 @media(max-width:1000px){
-	.main-grid{
+	#main-grid{
 		display:grid;
 		grid-template-areas:"header"
 		"albums"
@@ -295,7 +295,7 @@ POP OVER STYLES START
 		font-size:5rem;
 	}
 
-	.main-grid{
+	#main-grid{
 
 	grid-template-columns:1fr 800px 1fr;
 

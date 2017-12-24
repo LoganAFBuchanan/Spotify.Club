@@ -10,7 +10,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="images/icon.png"/>
 </head>
 <body>
-	<div class="main-grid">
+	<div id="main-grid">
 		<header >
 			<h1>Jolly Friendsmas!</h1>
 			<p>A collection of albums curated for the people I love!</p>
@@ -541,12 +541,22 @@
 
 <script>
 
+	var mainGrid = document.getElementById('main-grid');
 	var popover = document.getElementById('pop-over');
 	var albumCollection = document.getElementsByClassName('album-grid'); //HTMLCollection
 	var closeButton = document.getElementsByClassName('close');	
 
 	var albumArray = [].slice.call(albumCollection); //Changing Collection to Array for use in forEach
 	var closeArray = [].slice.call(closeButton);
+
+/*
+	mainGrid.addEventListener('click', function () {
+		if(popover.classList.contains('show')) {
+			hidePopover();
+		}
+	});
+
+	*/
 
 	//Setting listeners for all the albums on the site
 	albumArray.forEach(function(element) {
@@ -573,6 +583,8 @@
 			}
 		});
 	});
+
+
 
 	window.addEventListener("resize", maintainHidden);
 
