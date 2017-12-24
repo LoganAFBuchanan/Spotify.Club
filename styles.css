@@ -53,6 +53,7 @@ header{
 .album-grid{
 	position:relative;
 	line-height:0;
+	cursor:pointer;
 }
 
 .album-grid img.background{
